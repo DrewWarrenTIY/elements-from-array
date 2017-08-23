@@ -41,6 +41,10 @@ var exampleObj = {
   "type": "binaryswitches"
 }
 
+var irisCount = 0;
+var levitonCount = 0;
+var yaleCount = 0;
+
 var exampleObjArray = [{
   "network-id":"093B",
   "endpoint":"01",
@@ -71,9 +75,45 @@ var exampleObjArray = [{
   "name": "Yale Lock One",
   "device": "Yale Lock",
   "type": "locks"
+}, {
+  "network-id":"093B",
+  "endpoint":"01",
+  "euid64":"000D6F000B2E5846",
+  "in-clusters":["Basic","Identify","Groups","Scenes","On/Off","Electricity Measurement","Diagnostics","FC03[Unknown/Non-Standard]"],
+  "out-clusters":["OTA Update (Non HA/ZCL)"],
+  "profile":"Home Automation (HA)",
+  "name": "Iris Plug Two",
+  "device": "Iris Plug",
+  "type": "binaryswitches"
+}, {
+  "network-id":"093B",
+  "endpoint":"01",
+  "euid64":"000D6F000B2E5846",
+  "in-clusters":["Basic","Identify","Groups","Scenes","On/Off","Electricity Measurement","Diagnostics","FC03[Unknown/Non-Standard]"],
+  "out-clusters":["OTA Update (Non HA/ZCL)"],
+  "profile":"Home Automation (HA)",
+  "name": "Iris Plug Three",
+  "device": "Iris Plug",
+  "type": "binaryswitches"
 }];
 
-console.log("exampleObj: ", exampleObj);
+function incrementDevices(obj) {
+  if(obj.device === "Iris Plug") {
+    irisCount ++;
+  }
+  if(obj.device === "Leviton Plug") {
+    levitonCount ++;
+  }
+  if(obj.device === "Yale Lock") {
+    yaleCount ++;
+  }
+}
+
+function resetDeviceCount() {
+  irisCount = 0;
+  levitonCount = 0;
+  yaleCount = 0;
+}
 
 function makeFirstDiv(divId, cssClass) {
   return '<div id="' + divId + '" class="dap-control-element dap-toggle-' + cssClass + '"> </div>';
@@ -125,11 +165,11 @@ function elementFromObj(obj, number) {
   firstDiv.outerHTML = makeFirstDiv(divId, cssClass);
 
   var secondDiv = document.createElement("div");
-  document.querySelector('.dap-toggle-' + cssClass).appendChild(secondDiv);
+  document.getElementById(divId).appendChild(secondDiv);
   secondDiv.outerHTML = makeSecondDiv(divId);
 
   var firstP = document.createElement("p");
-  document.querySelector('.dap-toggle-' + cssClass).appendChild(firstP);
+  document.getElementById(divId).appendChild(firstP);
   firstP.outerHTML = makeFirstP(divId, obj.name);
 
   var thirdDiv = document.createElement("div");
@@ -149,5 +189,16 @@ function elementFromObj(obj, number) {
 // elementFromObj(exampleObj, 1);
 
 exampleObjArray.forEach(function (c,i,a) {
-  elementFromObj(c,i);
+  incrementDevices(c);
+  if (c.device === "Iris Plug") {
+    elementFromObj(c, irisCount);
+  }
+  if (c.device === "Leviton Plug") {
+    elementFromObj(c, levitonCount);
+  }
+  if (c.device === "Yale Lock") {
+    elementFromObj(c, yaleCount);
+  }
 });
+
+resetDeviceCount();
