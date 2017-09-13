@@ -10,7 +10,7 @@
     <input class="js-to-be-added" placeholder="Enter a string to add"/>
     <button class="js-add-to-array" onclick="addToArray()" type="submit">Add to Array</button>
     <div>
-      <h3>The Array Looks Like:</h3>
+      <h3>The String Array Looks Like:</h3>
       <span>[<span class="js-array-span"></span>]</span>
     </div>
     <br/>
@@ -18,11 +18,45 @@
     <div>
       <h3>The Elements (buttons):</h3>
       <div class="js-element-container">
-        <button class="js-element-template" type="button">Template</button>
+        <!-- Buttons Go Here! -->
       </div>
     </div>
-    <div class="obj-element-container">
-
+    <input class="js-to-be-obj-name" placeholder="Enter name"/>
+    <br>
+    <input class="js-to-be-obj-age" placeholder="Enter age"/>
+    <br>
+    <select class="js-to-be-obj-gender">
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <br>
+    <button class="js-add-to-object" onclick="addToObjectArr()">Add Object to Array</button>
+    <br/>
+    <button class="js-make-elements-from-obj" onclick="makeElementsFromObj()" type="button">Make Elements From Objects</button>
+    <div>
+      <h3>The Elements:</h3>
+      <div class="obj-element-container">
+        <!-- Elements Go Here! -->
+        <div class="first-div male">
+          <p class="name">Name</p>
+          <div class="second-div">
+            <p class="age">Age</p>
+          </div>
+        </div>
+        <div class="first-div female">
+          <p class="name">Name</p>
+          <div class="second-div">
+            <p class="age">Age</p>
+          </div>
+        </div>
+        <div class="first-div other">
+          <p class="name">Name</p>
+          <div class="second-div">
+            <p class="age">Age</p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="/js/scripts.js"></script>

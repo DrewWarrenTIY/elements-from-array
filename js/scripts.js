@@ -1,6 +1,7 @@
 "use strict";
 
 var exampleArr = [];
+var objArr = [];
 
 document.querySelector(".js-to-be-added")
     .addEventListener("keyup", function(event) {
@@ -12,6 +13,10 @@ document.querySelector(".js-to-be-added")
 
 function addToArray() {
   var toButton = document.querySelector('.js-to-be-added');
+  if (toButton.value === '') {
+    console.log("Whoops! That's an empty string!")
+    return false;
+  }
   console.log("input value: ", toButton.value);
   exampleArr.push(toButton.value);
   console.log("exampleArr value: ", exampleArr);
@@ -30,11 +35,6 @@ function makeElements() {
   });
 }
 
-var btnTemplate = document.querySelector('.js-element-template').outerHTML;
-console.log("btnTemplate: ", btnTemplate);
-
-document.querySelector('.js-element-template').className = "js-element-template dap-hide";
-
 function logIt(obj) {
   console.log('Button says: ', obj.textContent);
 }
@@ -42,6 +42,44 @@ function logIt(obj) {
 function makeButton(text) {
   return '<button class="js-element-template js-btn" type="button" onClick="logIt(this)">' + text + '</button>'
 }
+
+function addToObjectArr() {
+  var objToAdd = {};
+  var name = document.querySelector('.js-to-be-obj-name');
+  var age = document.querySelector('.js-to-be-obj-age');
+  var gender = document.querySelector('.js-to-be-obj-gender');
+
+  objToAdd.name = name.value;
+  objToAdd.age = age.value;
+  objToAdd.gender = gender.value.toLowerCase();
+
+  console.log('objToAdd: ', objToAdd);
+
+  objArr.push(objToAdd);
+  name.value = '';
+  age.value = '';
+}
+
+function makeFirstDiv(gender) {
+  return '<div class="first-div ' + gender + '"> </div>';
+}
+
+function makeSecondDiv() {
+  return '<div class="second-div"> </div>';
+}
+
+function makeFirstP(name) {
+  return '<p class="name">' + name + '</p>';
+}
+
+function makeSecondP(age) {
+  return '<p class="age">' + age + '</p>';
+}
+
+function makeElementsFromObj() {
+
+}
+
 
 //
 // var exampleObj = {

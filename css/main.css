@@ -9,3 +9,30 @@ body {
 .dap-show {
   display: block;
 }
+
+.obj-element-container {
+  display: flex;
+}
+
+.first-div {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  text-align: center;
+}
+
+.age {
+  margin-top: 90px;
+}
+
+.male {
+  background-color: lightblue;
+}
+
+.female {
+  background-color: pink;
+}
+
+.other {
+  background-color: lightyellow;
+}
