@@ -24,6 +24,14 @@ function addToArray() {
   toButton.value = '';
 }
 
+function logIt(obj) {
+  console.log('Button says: ', obj.textContent);
+}
+
+function makeButton(text) {
+  return '<button class="js-element-template js-btn" type="button" onClick="logIt(this)">' + text + '</button>'
+}
+
 function makeElements() {
   document.querySelector('.js-element-container').innerHTML = '';
   console.log(exampleArr);
@@ -33,14 +41,6 @@ function makeElements() {
     document.querySelector('.js-element-container').appendChild(newButton);
     newButton.outerHTML = makeButton(c);
   });
-}
-
-function logIt(obj) {
-  console.log('Button says: ', obj.textContent);
-}
-
-function makeButton(text) {
-  return '<button class="js-element-template js-btn" type="button" onClick="logIt(this)">' + text + '</button>'
 }
 
 function addToObjectArr() {
